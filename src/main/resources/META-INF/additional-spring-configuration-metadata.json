@@ -1,0 +1,22 @@
+{
+  "properties": [
+    {
+      "name": "jwt.secret",
+      "type": "java.lang.String",
+      "description": "Secret key for JWT token.",
+      "defaultValue": ""
+    },
+    {
+      "name": "jwt.get.token.uri",
+      "type": "java.lang.String",
+      "description": "URI to get the JWT token.",
+      "defaultValue": ""
+    },
+    {
+      "name": "spring.main.cloud-foundry.vcap",
+      "type": "java.lang.Boolean",
+      "description": "Indicates if VCAP environment variable should be used.",
+      "defaultValue": false
+    }
+  ]
+}
