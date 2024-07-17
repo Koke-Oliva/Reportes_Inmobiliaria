@@ -16,6 +16,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.util.List;
 
 @Component
 public class JwtRequestFilter extends OncePerRequestFilter {
@@ -25,11 +26,28 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
+    
+    private static final List<String> EXCLUDE_URLS = List.of(
+    		 "/v3/api-docs",
+             "/v3/api-docs/*",
+             "/swagger-ui/*",
+             "/swagger-ui.html",
+             "/swagger-resources/**",
+             "/webjars/**"
+     );
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
             throws ServletException, IOException {
+    	
+    	String requestURI = request.getRequestURI();
 
+        // Omitir rutas de Swagger
+        if (EXCLUDE_URLS.stream().anyMatch(requestURI::startsWith)) {
+            chain.doFilter(request, response);
+            return;
+        }
+    	
         final String requestTokenHeader = request.getHeader("Authorization");
 
         String username = null;

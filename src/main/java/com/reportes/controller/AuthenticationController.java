@@ -12,7 +12,10 @@ import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
+@Tag(name = "Autenticación", description = "API para autenticación de usuarios")
 @RestController
 @CrossOrigin
 public class AuthenticationController {
@@ -25,7 +28,8 @@ public class AuthenticationController {
 
     @Autowired
     private JwtUserDetailsService userDetailsService;
-
+    
+    @Operation(summary = "Autenticar usuario y generar token", description = "Autentica un usuario y genera un token JWT")
     @PostMapping("/authenticate")
     public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
         authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());

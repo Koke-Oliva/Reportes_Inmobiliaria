@@ -28,4 +28,8 @@ public class UsuarioService {
     public Usuario findByUsername(String username) {
         return usuarioRepository.findByUsername(username);
     }
+    
+    public void deleteById(Long id) {
+        usuarioRepository.deleteById(id);
+    }
 }
