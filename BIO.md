@@ -27,5 +27,4 @@ Deberían contactarme porque tengo una combinación única de habilidades en an�
 
 ## ¿Cómo y a través de qué medios te pueden contactar?
 - **Correo Electrónico**: jorgeauad.oliva@gmail.com
-- **Teléfono**: +56 9 62322188
 - **LinkedIn**: [Jorge Auad Oliva](https://www.linkedin.com/in/jorge-auad-oliva)
